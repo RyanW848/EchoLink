@@ -16,12 +16,17 @@ export const signup = async (req, res) => {
          * -Has a lowercase letter
          * -Has a number
          */
-        if ( password.length < 8 || 
-            !(/[A-Z]/.test(password)) || 
-            !(/[a-z]/.test(password)) || 
-            !(/[0-9]/.test(password))
-        ) {
-            return res.status(400).json({ message: "Password does not satisfy all requirements" });
+        if (password.length < 8) {
+            return res.status(400).json({ message: "Password must be at least 8 characters" });
+        }
+        if (!(/[A-Z]/.test(password))) {
+            return res.status(400).json({ message: "Password must contain at least one capital letter" });
+        }
+        if (!(/[a-z]/.test(password))) {
+            return res.status(400).json({ message: "Password must contain at least one lowercase letter" });
+        }
+        if (!(/[0-9]/.test(password))) {
+            return res.status(400).json({ message: "Password must contain at least one number" });
         }
 
         const user = await User.findOne({ email });
@@ -116,10 +121,10 @@ export const updateProfile = async (req, res) =>{
 
 export const checkAuth = (req, res) => {
     try {
-        res.status(200).json(req.user);
+      res.status(200).json(req.user);
     } catch (error) {
-        console.log("Error in checkAuth", error.message);
-        res.status(500).json({ message: "Internal Server Error" });
+      console.log("Error in checkAuth", error.message);
+      res.status(500).json({ message: "Internal Server Error" });
     }
-}
+};
 

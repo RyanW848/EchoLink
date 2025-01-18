@@ -15,25 +15,43 @@ const SignUpPage = () => {
     const { signup, isSigningUp } = useAuthStore();
 
     const validateForm = () => {
+        // Check if form data is valid
         if (!formData.fullName.trim()) {
             return toast.error("Full name is required");
         }
         if (!formData.email.trim()) {
             return toast.error("Email is required");
         }
-        if (!/\$+@\S+\.\S+/.test(formData.email)) {
-            return toast.error("Invalid email");
+        if (!/\S+@\S+\.\S+/.test(formData.email)) {
+            return toast.error("Invalid email format");
         }
-        if (!formData.password()) {
+        if (!formData.password) {
             return toast.error("Password is required");
         }
-        if (formData.password().length < 8) {
+        if (formData.password.length < 8) {
             return toast.error("Password must be at least 8 characters");
         }
+        if (!/[A-Z]/.test(formData.password)) {
+            return toast.error("Password must contain at least one capital letter");
+        }
+        if (!/[a-z]/.test(formData.password)) {
+            return toast.error("Password must contain at least one lowercase letter");
+        }
+        if (!/[0-9]/.test(formData.password)) {
+            return toast.error("Password must contain at least one number");
+        }
+
+        return true;
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        const isValid = validateForm();
+
+        if (isValid === true) {
+            signup(formData);
+        }
     };
 
     return (
