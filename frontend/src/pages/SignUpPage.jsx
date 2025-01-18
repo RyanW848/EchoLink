@@ -3,7 +3,7 @@ import { useAuthStore } from "../store/useAuthStore.js"
 import { useState } from "react"
 import { Link } from "react-router-dom"
 import toast from "react-hot-toast"
-import { MessageSquare, User, Mail, Lock, Eye, EyeOff, Loader2 } from "lucide-react"
+import { AudioWaveform, User, Mail, Lock, Eye, EyeOff, Loader2 } from "lucide-react"
 
 const SignUpPage = () => {
     const [ showPassword, setShowPassword ] = useState(false);
@@ -55,10 +55,10 @@ const SignUpPage = () => {
     };
 
     return (
-        <div className="min-h-screen grid sm:grid-cols-2">
+        <div className="min-h-screen grid sm:grid-cols-2 mt-8">
             {/* left side */}
             <div className="flex flex-col justify-center items-center p-6 sm:p-12">
-                <div className="w-full max-w-md space-y-2">
+                <div className="w-full max-w-md space-y-4">
                     {/* LOGO */}
                     <div className="text-center mb-8">
                         <div className="flex flex-col items-center gap-2 group">
@@ -66,7 +66,7 @@ const SignUpPage = () => {
                                 className="size-12 rounded-xl bg-primary/10 flex items-center justify-center 
                             group-hover:bg-primary/20 transition-colors"
                             >
-                                <MessageSquare className="size-6 text-primary" />
+                                <AudioWaveform className="size-6 text-primary" />
                             </div>
                             <h1 className="text-3xl font-bold mt-2">
                                 Create Account

@@ -24,7 +24,7 @@ const AuthImagePattern = ({ title, subtitle }) => {
                   ? "animate-pulse"
                   : ""
               } ${
-                i % 2 === 0 ? "bg-sky-500" : "bg-teal-300"
+                i % 2 === 0 ? "bg-sky-500" : "bg-teal-400"
               }`}
             />
           ))}
