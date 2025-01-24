@@ -73,7 +73,7 @@ This repository contains the source code for EchoLink, a full stack real-time ch
    npm run start
    ```
 
-### Running the Application
+### License
 
 This project is licensed under the MIT License. See the [LICENSE](https://github.com/RyanW848/EchoLink/blob/main/LICENSE) file for details.
    
